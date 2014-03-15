@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <string.h>
-#include <can-encap.h>
+#include <libmicro/can-encap.h>
 
 void can_message_from_can_message_raw(can_message *cmsg, can_message_raw *rmsg)
 {

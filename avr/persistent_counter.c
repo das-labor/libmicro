@@ -9,7 +9,7 @@
 #include <avr/interrupt.h> /* cli() & sei() */
 #include <avr/eeprom.h>
 
-#include <persistent_counter.h>
+#include <libmicro/persistent_counter.h>
 
 /*
  * Not used at the moment

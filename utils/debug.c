@@ -6,7 +6,7 @@
 #include <time.h>
 #include <syslog.h>
 
-#include <debug.h>
+#include <libmicro/debug.h>
 
 int debug_time = 0;
 int debug_level  = 0;

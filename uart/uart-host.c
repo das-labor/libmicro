@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include <uart.h>
+#include <libmicro/uart.h>
 
 int uart_fd;
 

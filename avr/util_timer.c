@@ -1,6 +1,6 @@
 #include <avr/io.h>
 
-#include <util_timer.h>
+#include <libmicro/util_timer.h>
 #ifdef UTIL_TIMER_HW
 
 void wait(int ms)

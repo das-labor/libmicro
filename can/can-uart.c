@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <can-uart.h>
+#include <libmicro/can-uart.h>
 
 /*****************************************************************************
  * Global variables

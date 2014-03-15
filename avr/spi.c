@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#include <spi.h>
+#include <libmicro/spi.h>
 
 void spi_init()
 {

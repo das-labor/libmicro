@@ -5,7 +5,7 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 
-#include <uart.h>
+#include <libmicro/uart.h>
 
 #ifdef ATMEGA128
 #define UCSRB UCSR0B

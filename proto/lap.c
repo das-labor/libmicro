@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <lap.h>
+#include <libmicro/lap.h>
 
 /****************************************************************************
  * STUBS: LAP Core Services
