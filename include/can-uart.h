@@ -9,7 +9,7 @@
 
 #include "can.h"
 #include "can-encap.h"
-#include "uart-host.h"
+#include "uart.h"
 #include "crc16.h"
 #include "debug.h"
 
