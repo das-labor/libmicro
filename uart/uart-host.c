@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include <uart_host.h>
+#include <uart-host.h>
 
 int uart_fd;
 
