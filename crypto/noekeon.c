@@ -31,7 +31,7 @@
 #ifdef __AVR__
 #include <avr/pgmspace.h>
 #endif
-#include "../include/noekeon.h"
+#include <noekeon.h>
 
 #define ROUND_NR 16
 

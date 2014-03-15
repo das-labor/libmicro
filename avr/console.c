@@ -17,10 +17,10 @@
 #include <stdlib.h>
 
 #define CONSOLE_C
-#include "../include/console.h"
+#include <console.h>
 
 #ifdef CONSOLE_UART
-#include "../include/uart.h"
+#include <uart.h>
 #define stdin_getc_nb uart_getc_nb
 #define stdout_putc uart_putc
 #define stdout_putstr uart_putstr

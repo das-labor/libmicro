@@ -8,7 +8,7 @@
 #include <errno.h>
 #include <signal.h>
 
-#include "../include/can-tcp.h"
+#include <can-tcp.h>
 
 int listen_socket;
 cann_conn_t *cann_conns_head = NULL;

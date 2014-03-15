@@ -6,7 +6,7 @@
 #include <time.h>
 #include <syslog.h>
 
-#include "../include/debug.h"
+#include <debug.h>
 
 int debug_time = NULL;
 int debug_level  = NULL;

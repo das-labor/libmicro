@@ -5,8 +5,8 @@
 #define asm asm volatile
 #endif
 
-#include "../include/can.h"
-#include "../include/spi.h"
+#include <can.h>
+#include <spi.h>
 
 #define spi_clear_ss() SPI_PORT |= (1<<SPI_PIN_SS)
 #define spi_set_ss() SPI_PORT &= ~(1<<SPI_PIN_SS)

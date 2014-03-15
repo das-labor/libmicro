@@ -8,7 +8,7 @@
 #include <errno.h>
 #include <signal.h>
 
-#include "../include/tcp_server.h"
+#include <tcp_server.h>
 
 #ifndef max
 #define max(a,b) (((a) > (b)) ? (a) : (b))

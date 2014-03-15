@@ -7,8 +7,8 @@
  */
 
 #ifdef AVR
-#include "../include/noekeon.h"
-#include "../include/memxor.h"
+#include <noekeon.h>
+#include <memxor.h>
 #endif
 #include <stdint.h>
 #include <string.h>
