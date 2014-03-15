@@ -125,7 +125,7 @@ void uart_putstr(char *str)
         }
 }
 
-unsigned char uart_getc_nb(char *c)
+char uart_getc_nb(char *c)
 {
         int ret;
 
