@@ -8,9 +8,9 @@
 
 #include <debug.h>
 
-int debug_time = NULL;
-int debug_level  = NULL;
-int debug_syslog = NULL;
+int debug_time = 0;
+int debug_level  = 0;
+int debug_syslog = 0;
 char *debug_file = NULL;
 FILE *debugFP;
 
