@@ -1,0 +1,62 @@
+/**
+ * \author      Daniel Otte
+ * \date        2008-08-24
+ * \license GPLv3 or later
+ * \brief   random number generator based on noekeon running in CFB-mode
+ *
+ */
+
+#ifdef AVR
+#include "../include/noekeon.h"
+#include "../include/memxor.h"
+#endif
+#include <stdint.h>
+#include <string.h>
+
+static uint8_t random_state[16];
+static uint8_t random_key[16];
+static uint8_t i = 0;
+
+#ifndef AVR
+uint8_t random8(void)
+{
+        return ((uint8_t)random());
+}
+#else
+
+uint8_t random8(void)
+{
+        static uint8_t sr[16];
+
+        if (i == 0) {
+                noekeon_enc(random_state, random_key);
+                memcpy(sr, random_state, 16);
+                i = 15;
+                return sr[15];
+        }
+        --i;
+        return sr[i];
+}
+void random_block(void *dest)
+{
+        i = 0;
+        noekeon_enc(random_state, random_key);
+        memcpy(dest, random_state, 16);
+}
+
+void srandom32(uint32_t seed)
+{
+        memcpy(random_key, &seed, 4);
+}
+
+void random_seed(const void *buffer)
+{
+        memcpy(random_key, buffer, 16);
+}
+
+void random_add(const void *buffer)
+{
+        memxor(random_key, buffer, 16);
+}
+#endif
+
