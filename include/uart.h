@@ -13,6 +13,7 @@
  * #define UART_LEDS             // LED1 and LED2 toggle on tx and rx interrupt
  *
  */
+#ifdef __AVR__
 
 #include <inttypes.h>
 #include <avr/pgmspace.h>
@@ -20,16 +21,37 @@
 void uart_init();
 
 void uart_putc(char c);
-void uart_putstr(char * str);
+void uart_putstr(char *str);
 void uart_putstr_P(PGM_P str);
 void uart_hexdump(char *buf, int len);
 
 char uart_getc();
-char uart_getc_nb(char *c);		// returns 1 on success
+char uart_getc_nb(char *c);             // returns 1 on success
 
 //get one Cariage return terminated line
 //echo charakters back on Uart
 //returns buffer with zero terminated line on success, 0 pointer otherwise
-char * uart_getline_nb();
+char *uart_getline_nb();
+
+#else
+
+#include "config.h"
+#include "debug.h"
+
+#include <sys/select.h>
+
+void uart_init(char *sport);
+void uart_close(void);
+
+void uart_putc(char c);
+void uart_putstr(char *str);
+
+char uart_getc(void);
+char uart_getc_nb(char *c);             // returns 1 on success
+
+/* UART-Host specific */
+int uart_fd;
+
+#endif
 
 #endif

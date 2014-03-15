@@ -63,8 +63,9 @@ void cann_listen(char *port)
 
         s = getaddrinfo(NULL, port, &hints, &result);
         if (s != 0) {
-                fprintf(stderr, "No listening addresses available
-                        (getaddrinfo: %s)\n", gai_strerror(s));
+                fprintf(stderr,
+                        "No listening addresses available(getaddrinfo: %s)\n",
+                        gai_strerror(s));
                 exit(EXIT_FAILURE);
         }
 
