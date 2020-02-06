@@ -38,4 +38,7 @@ void rs232can_msg_from_can_message_raw(rs232can_msg *rmsg, can_message_raw *cmsg
 {
         rmsg->cmd = RS232CAN_PKT;
         rmsg->len = sizeof(can_message_raw) + cmsg->dlc - 8;
+
+        // 5 = 4 bytes ID, 1 byte DLC
+        memcpy(rmsg->data, cmsg, cmsg->dlc + 5);
 }
