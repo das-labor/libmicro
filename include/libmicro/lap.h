@@ -41,7 +41,8 @@ typedef struct {
  * Known ports and services
  */
 
-typedef enum { PORT_MGT = 0x30, PORT_LAMPE = 0x20, PORT_SDO = 0x15, PORT_SDO_DATA = 0x16, PORT_LAPD = 0x18,
+// not sure about PORT_LAMPE. it used to be 0x20, which did not work. But who knows which weird devices use 0x20 for this
+typedef enum { PORT_MGT = 0x30, PORT_LAMPE = 0x02, PORT_SDO = 0x15, PORT_SDO_DATA = 0x16, PORT_LAPD = 0x18,
                PORT_BORG = 0x23, PORT_MOOD = 0x17, PORT_REMOTE = 0x21, PORT_GATE = 0x22, PORT_CHUCK = 0x26
              }  ports;
 
