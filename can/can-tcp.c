@@ -17,7 +17,9 @@ cann_conn_t *cann_conns_head = NULL;
 #define max(a,b) (((a) > (b)) ? (a) : (b))
 #endif
 
-
+#ifdef __APPLE__
+#define MSG_NOSIGNAL SO_NOSIGPIPE
+#endif
 //Convert a struct sockaddr address to a string, IPv4 and IPv6:
 
 static char *get_ip_str(const struct sockaddr *sa, char *s, size_t maxlen)

@@ -6,6 +6,25 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <termios.h>
+#ifdef __APPLE__
+// Apple's termios.h is missing these baud levels
+#define B57600   57600
+#define B115200  115200
+#define B230400  230400
+#define B460800  460800
+#define B500000  500000
+#define B576000  576000
+#define B921600  921600
+#define B1000000 1000000
+#define B1152000 1152000
+#define B1500000 1500000
+#define B2000000 2000000
+#define B2500000 2500000
+#define B3000000 3000000
+#define B3500000 3500000
+#define B4000000 4000000
+#endif
+
 #include <sys/select.h>
 #include <sys/types.h>
 #include <sys/stat.h>
