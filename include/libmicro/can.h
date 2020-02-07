@@ -10,6 +10,10 @@
  * #define CAN_TX_BUFFER_SIZE 2 //only used for Interrupt
  */
 
+#define CAN_MESSAGE_RAW_HEADER_SIZE (4+1)
+
+#define CAN_MAX_DATA_BYTES (8)
+
 /*****************************************************************************
  * Types
  */
@@ -21,28 +25,39 @@ typedef unsigned char can_port;
 typedef uint16_t can_channel_t;
 typedef uint8_t can_subchannel_t;
 
+// Note: DLC is CAN terminology for Data Length Code
+// It is a length field specifying the amount of data bytes in a frame
+
+// "low level" representation
+// id is a raw CAN ID
+// see can-encap.h for encapsulation (TCP, rs232)
 typedef struct {
         uint32_t id;
         uint8_t dlc;
-        uint8_t data[8];
+        uint8_t data[CAN_MAX_DATA_BYTES];
 } can_message_raw;
 
+// "high level" representation
+// this must be converted to a can_message_raw before sending it somewhere
 typedef struct {
         can_addr      addr_src;
         can_addr      addr_dst;
         can_port      port_src;
         can_port      port_dst;
         unsigned char dlc;
-        unsigned char data[8];
+        unsigned char data[CAN_MAX_DATA_BYTES];
 } can_message;
 
+// "high level" v2
+// never really got established...
+// must also be converted to a can_message_raw before sending it somewhere
 typedef struct {
         can_channel_t    channel;
         can_subchannel_t subchannel;
         can_addr         addr_src;
         can_addr         addr_dst;
         uint8_t          dlc;
-        uint8_t          data[8];
+        uint8_t          data[CAN_MAX_DATA_BYTES];
 } can_message_v2;
 
 

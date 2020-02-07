@@ -5,6 +5,7 @@
 #include <string.h>
 #include <libmicro/can-encap.h>
 
+// convert a "low level" can_message_raw to a can_message
 void can_message_from_can_message_raw(can_message *cmsg, can_message_raw *rmsg)
 {
         cmsg->addr_src = (uint8_t) (rmsg->id >> 8);
@@ -16,6 +17,7 @@ void can_message_from_can_message_raw(can_message *cmsg, can_message_raw *rmsg)
         memcpy(cmsg->data, rmsg->data, rmsg->dlc);
 }
 
+// convert a "high level" can_message to a can_message_raw
 void can_message_raw_from_can_message(can_message_raw *raw_msg, can_message *cmsg)
 {
         memset(raw_msg, 0, sizeof(can_message_raw));
@@ -28,17 +30,22 @@ void can_message_raw_from_can_message(can_message_raw *raw_msg, can_message *cms
         memcpy(raw_msg->data, cmsg->data, cmsg->dlc);
 }
 
+// extract a can_message_raw from a rs232can_msg
 void can_message_raw_from_rs232can_msg(can_message_raw *cmsg, rs232can_msg *rmsg)
 {
-        memcpy(cmsg, rmsg->data, sizeof(can_message_raw) );
+        memcpy(cmsg, rmsg->data, sizeof(can_message_raw));
 }
 
-
+// encapsulate a can_message_raw in a rs232can_msg
 void rs232can_msg_from_can_message_raw(rs232can_msg *rmsg, can_message_raw *cmsg)
 {
+        unsigned int len = CAN_MESSAGE_RAW_HEADER_SIZE + cmsg->dlc;
+
+        memset(rmsg, 0, sizeof(rs232can_msg));
+
         rmsg->cmd = RS232CAN_PKT;
-        rmsg->len = sizeof(can_message_raw) + cmsg->dlc - 8;
+        rmsg->len = len;
 
         // 5 = 4 bytes ID, 1 byte DLC
-        memcpy(rmsg->data, cmsg, cmsg->dlc + 5);
+        memcpy(rmsg->data, cmsg, len);
 }
