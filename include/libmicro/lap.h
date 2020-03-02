@@ -44,6 +44,36 @@ typedef struct {
  * Known ports and services
  */
 
+typedef enum {
+    Gateway = 0x00,
+    Powercommander = 0x02,
+    Powercommander_Test = 0x03,
+    Hauptschalter = 0x04,
+    Powermeter = 0x05,
+    Powermeter_Drehstrom = 0x06,
+    CANIR = 0x10,
+    RaucherkellerNode = 0x13,
+    KuechenCAN = 0x23,
+    LaufschriftBorg = 0x24,
+    Treppenblink = 0x25,
+    NixieUhr = 0x26,
+    Toilette = 0x2A,
+    Moodbar = 0x31,
+    SpotControl = 0x35,
+    Borg3D = 0x3D,
+    Borg16 = 0x42,
+    Borgjacke = 0x43,
+    Moodlight = 0x51,
+    RFM12 = 0x53,
+    Lounge = 0x60,
+    Lounge_Deprecated = 0x61,
+    Bastel = 0xA9,
+    OpenBlindCtrl = 0xC0,
+// OpenBlind[1-9] = 0xC[1-9],
+    TouchTest = 0xD0,
+    Broadcast = 0xFF
+} lap_addrs;
+
 // not sure about PORT_LAMPE. it used to be 0x20, which did not work. But who knows which weird devices use 0x20 for this
 typedef enum {
     PORT_MGT = 0x30, PORT_LAMPE = 0x02, PORT_SDO = 0x15, PORT_SDO_DATA = 0x16, PORT_LAPD = 0x18,
@@ -54,25 +84,35 @@ typedef enum {
 
 typedef enum {
     FKT_MGT_PING = 0x00, FKT_MGT_PONG = 0x01,
-    FKT_MGT_RESET = 0x02, FKT_MGT_AWAKE = 0x03, FKT_MGT_TIMEREQUEST = 0x04, FKT_MGT_TIMEREPLY = 0x05
+    FKT_MGT_RESET = 0x02, FKT_MGT_AWAKE = 0x03,
+    FKT_MGT_TIMEREQUEST = 0x04, FKT_MGT_TIMEREPLY = 0x05
 } lap_mgt_fkts;
 
 typedef enum {
-    FKT_LAMPE_SET = 0x00, FKT_LAMPE_SETMASK = 0x01,
-    FKT_LAMPE_SETDELAY = 0x02, FKT_LAMPE_ADD = 0x03
+    FKT_LAMPE_SET = 0x00,
+    FKT_LAMPE_SETMASK = 0x01,
+    FKT_LAMPE_SETDELAY = 0x02,
+    FKT_LAMPE_ADD = 0x03
 } lap_lampe_fkts;
 
 typedef enum {
-    FKT_BORG_INFO = 0x00, FKT_BORG_MODE = 0x01, FKT_BORG_SCROLLTEXT_RESET = 0x02,
+    FKT_BORG_INFO = 0x00,
+    FKT_BORG_MODE = 0x01,
+    FKT_BORG_SCROLLTEXT_RESET = 0x02,
     FKT_BORG_SCROLLTEXT_APPEND = 0x03
 } lap_borg_fkts;
 
 typedef enum {
-    FKT_ONOFF_INFO = 0, FKT_ONOFF_SET = 1, FKT_ONOFF_GET = 2,
+    FKT_ONOFF_INFO = 0,
+    FKT_ONOFF_SET = 1,
+    FKT_ONOFF_GET = 2,
 } lap_lapd_fkts;
 
 typedef enum {
-    FKT_MOOD_INFO = 0x00, FKT_MOOD_GET = 0x01, FKT_MOOD_SET = 0x02, FKT_MOOD_ONOFF = 0x03
+    FKT_MOOD_INFO = 0x00,
+    FKT_MOOD_GET = 0x01,
+    FKT_MOOD_SET = 0x02,
+    FKT_MOOD_ONOFF = 0x03
 } lap_mood_fkts;
 
 #define SDO_CMD_READ            0x20
