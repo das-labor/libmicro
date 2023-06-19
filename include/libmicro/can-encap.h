@@ -34,7 +34,7 @@ typedef enum {
 } rs232can_cmd;
 
 
-typedef struct {
+typedef struct rs232can_msg {
         unsigned char cmd;
         unsigned char len;
         char data[RS232CAN_MAXLENGTH];

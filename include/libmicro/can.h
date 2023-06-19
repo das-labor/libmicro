@@ -19,6 +19,9 @@
  */
 
 #include <stdint.h>
+#include <unistd.h>
+
+typedef struct rs232can_msg rs232can_msg;
 
 typedef unsigned char can_addr;
 typedef unsigned char can_port;
@@ -89,7 +92,7 @@ void can_setled(unsigned char led, unsigned char state);
 can_message *can_buffer_get(void);
 void can_transmit(can_message *msg);
 
-#ifdef POSIX
+#ifdef _POSIX_VERSION
 void can_transmit_raw_gateway_message(rs232can_msg *rmsg);
 #endif
 
@@ -134,8 +137,8 @@ void can_free_raw(can_message_raw *msg);
 void can_free_raw(can_message_raw *msg);
 #endif
 
-#ifdef POSIX
-can_get_raw_gateway_message_nb
+#ifdef _POSIX_VERSION
+rs232can_msg * can_get_raw_gateway_message_nb(void);
 #endif
 
 /*****************************************************************************
